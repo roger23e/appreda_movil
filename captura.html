@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="">
+        <title>::.APPREDA MOVIL.::</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-table.css" rel="stylesheet" type="text/css"/>
+        <link href="css/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <link href="css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="preloader">
+            <div id="status">
+                <div class="preloader-logo"></div>
+                <h4>APPREDA MOVIL</h4>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <nav class="navbar navbar-default" >
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <a href="main.php" class="navbar-brand active">APPREDA MOVIL</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-112 col-xs-12">
+                        <div class="panel panel-default">
+                            <!--div class="panel-heading">
+                                <h3 class="panel-title"></h3>
+                            </div-->
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="well" id="ubicacion">
+                                        UBICACION
+
+                                        <div id="loader" style="padding-top: 15px;">
+                                            <img src="images/ajax-loader.gif" alt=""/>
+                                        </div>
+                                        <div class="alert alert-danger" id="error" style="display: none">
+                                            <h6>ERROR, NO SE PUDO OBTENER SU UBICACION</h6>
+                                            <h6>REINTENTAR</h6>
+                                            <button type="button" class="btn btn-link" id="refrescar"><span style="color: red;" class="fa fa-refresh"></span></button>
+                                        </div>
+                                        <div id="cordenadas" style="display: none">
+                                            <div class="form-group ubicacion">
+                                                <label for="latitud" class="col-sm-2 control-label hidden-xs hidden-sm">Latitud:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="latitud" placeholder="Latitud" disabled="disabled">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ubicacion">
+                                                <label for="longitud" class="col-sm-2 control-label hidden-xs hidden-sm">Longitud:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="longitud" placeholder="Longitud" disabled="disabled">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="well">
+                                        DATOS DEL ELECTOR
+                                        <div class="form-group">
+                                            <label for="nombres" class="col-sm-2 control-label hidden-xs hidden-sm">Nombres:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="nombres" placeholder="Nombres" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellido_p" class="col-sm-2 control-label hidden-xs hidden-sm">Apellido Paterno:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="apellido_p" placeholder="Apellido Paterno" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellido_m" class="col-sm-2 control-label hidden-xs hidden-sm">Apellido Materno:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="apellido_m" placeholder="Apellido Materno" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telefono" class="col-sm-2 control-label hidden-xs hidden-sm">Telefono:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="telefono" placeholder="Telefono">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="well">
+                                        DIRECCION DE LA CREDENCIAL DE ELECTOR
+                                        <div class="form-group">
+                                            <label for="estado" class="col-sm-2 control-label hidden-xs hidden-sm">Estado:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="estado" placeholder="Estado" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="municipio" class="col-sm-2 control-label hidden-xs hidden-sm">Municipio:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="municipio" placeholder="Municipio" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="div-secciones">
+                                            <label for="seccion" class="col-sm-2 control-label hidden-xs hidden-sm">Seccion:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="seccion" placeholder="Seccion" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="calleavenida" class="col-sm-2 control-label hidden-xs hidden-sm">Calle/Avenida:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="calleavenida" placeholder="Calle/Avenida" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="numero" class="col-sm-2 control-label hidden-xs hidden-sm">Numero:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="numero" placeholder="Numero" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="colonia" class="col-sm-2 control-label hidden-xs hidden-sm">Colonia:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="colonia"  placeholder="Colonia" disabled="disabled">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="well">
+                                        DIRECCION DE VIVIENDA
+                                        <div class="form-group">
+                                            <label for="calleavenida2" class="col-sm-2 control-label hidden-xs hidden-sm">Calle/Avenida:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="calleavenida2" placeholder="Calle/Avenida">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="numero2" class="col-sm-2 control-label hidden-xs hidden-sm">Numero:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="numero2" placeholder="Numero">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="colonia2" class="col-sm-2 control-label hidden-xs hidden-sm">Colonia:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="colonia2"  placeholder="Colonia">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type="button" id="guardar" class="btn btn-login">GUARDAR</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <p class="text-muted">escala</p>
+            </div>
+        </footer>
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-table.js" type="text/javascript"></script>
+        <script src="js/bootstrap-table-mobile.js" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAzkOUglgP1Pr46brhQBZnZTEyXM2aqnns"></script>
+        <script>
+            
+            var URL                 = null;
+            var METODO              = null;
+            var VALOR               = null;
+            var LOADER              = null;
+            var ERROR               = null;
+            var DATA                = null;
+            var ENCUESTADOR         = null;
+            var COD_ELECTOR         = null;
+            
+            var OPERACIONES         = null;
+            var COD_OPERACION       = null;
+            var NOMBRE_OPERACION    = null;
+            
+            var ENCUESTAS           = null;
+            var COD_ENCUESTA        = null;   
+            var NOMBRE_ENCUESTA     = null;
+            
+            var ENTIDADES           = null;
+            var COD_ENTIDAD         = null;
+            var NOMBRE_ENTIDAD      = null;
+            
+            var MUNICIPIOS          = null;
+            var COD_MUNICIPIO       = null;
+            var NOMBRE_MUNICIPIO    = null;
+            
+            var SRCCIONES           = null;
+            var COD_SECCION         = null;
+            var NOMBRE_SECCION      = null;
+            
+            var DATOS_ELECTOR       = null;
+            var RETORNO             = null;
+            var ELECTORES           = null;
+            
+            var SESSION_DATA = 
+            {
+                storeUserDataInSession: function(userData) 
+                {
+                    var userObjectString = JSON.stringify(userData);
+                    window.sessionStorage.setItem('userObject',userObjectString);
+                },
+                getUserDataFromSession: function() 
+                {
+                    var userData = window.sessionStorage.getItem('userObject');
+                    return JSON.parse(userData);
+                }
+            };
+           
+            function call_Ajax_Jsonp(URL, METODO, VALOR, LOADER, ERROR, FN) 
+            {
+                $.ajax
+                ({
+                    type: "GET",
+                    url: "https://escala.org.mx/APPREDA_MOVIL/common/ws.php?format=json",
+                    //url: "common/ws.php?format=json",
+                    data:
+                    {
+                        m: METODO,
+                        v: VALOR
+                    },
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "JasonpCallback",
+                    async: false,
+                    beforeSend: function()
+                    {
+                        $(LOADER).css("display", "block");
+                        $(LOADER).css("padding-bottom", "15px");
+                    },
+                    complete: function()
+                    {
+                        $(LOADER).css("display", "none");
+                    },
+                    success: function(data)
+                    {
+                        FN(data);
+                    },
+                    error: function () 
+                    {
+                        $(ERROR).css("display", "block");
+                        $(ERROR).html("<p style='padding:10px; color:red;'>No se pudo conectar, por favor intente nuevamente.</p>");
+                    }
+                });
+            }
+            
+            function buscarSeccionesMunicipio(municipios, clave) 
+            {
+                A = clave;
+                $.each(municipios, function(key)
+                {
+                    B = municipios[key].COD_MUNICIPIO;
+                    if(A === B)
+                    {
+                        SECCIONES =  municipios[key].SECCIONES; 
+
+                        $('#selectSecciones').empty();
+                        if (SECCIONES.length === 1)
+                        {
+                            COD_SECCION         = SECCIONES[0].COD_SECCION;
+                            NOMBRE_SECCION      = SECCIONES[0].COD_SECCION;
+                            $("#div-secciones").css("display", "none");
+                        }  
+                        else if (SECCIONES.length >=  1)
+                        {
+                            $('#selectSecciones').append($('<option selected value> -- SELECCIONE -- </option>'));
+                            $.each(SECCIONES, function(key)
+                            {
+                                COD_SECCION         = SECCIONES[key].COD_SECCION;
+                                NOMBRE_SECCION      = SECCIONES[key].COD_SECCION;
+                                $('#selectSecciones').append($('<option>',{
+                                    value:  COD_SECCION,
+                                    text:   COD_SECCION}
+                                ));
+                                $("#div-secciones").css("display", "block");
+                            });
+                            $('#selectSecciones').prop('disabled', false);
+                        }
+                        else
+                        {
+                            ERROR = "ESTS CAMPAÑA NO TIENE SECCIONES ASIGNADAS, POR FAVOR CONTACTE AL ADMINISTRADOR DEL SISTEMA";
+                        }  
+                    }
+                });       
+            }
+            
+            function buscarMunicipiosEntidad(entidades, clave) 
+            {
+                A = clave;
+                $.each(entidades, function(key)
+                {
+                    B = entidades[key].COD_ENTIDAD;
+                    if(A === B)
+                    {
+                        MUNICIPIOS =  entidades[key].MUNICIPIOS; 
+                        $('#selectMunicipios').empty();
+                        if (MUNICIPIOS.length === 1)
+                        {
+                            COD_MUNICIPIO       = MUNICIPIOS[0].COD_MUNICIPIO;
+                            NOMBRE_MUNICIPIO    = MUNICIPIOS[0].NOMBRE;
+                            buscarSeccionesMunicipio(MUNICIPIOS,MUNICIPIOS[0].COD_MUNICIPIO);
+                            $("#div-municipios").css("display", "none");
+                        }
+                        else if (MUNICIPIOS.length >=  1)
+                        {
+                            $('#selectMunicipios').append($('<option selected value> -- SELECCIONE -- </option>'));
+                            $.each(MUNICIPIOS, function(key)
+                            {
+                                COD_MUNICIPIO       = MUNICIPIOS[key].COD_MUNICIPIO;
+                                NOMBRE_MUNICIPIO    = MUNICIPIOS[key].NOMBRE;
+                                $('#selectMunicipios').append($('<option>',{
+                                    value:  COD_MUNICIPIO,
+                                    text:   NOMBRE_MUNICIPIO.toUpperCase()}
+                                ));
+                                $("#div-municipios").css("display", "block");
+                            });
+                            $('#municipios').prop('disabled', false);
+                        }
+                        else
+                        {
+                            ERROR = "ESTS CAMPAÑA NO TIENE MUNICIPIOS ASIGNADOS, POR FAVOR CONTACTE AL ADMINISTRADOR DEL SISTEMA";
+                        }  
+                    }
+                });       
+            }
+            
+            function buscarEntidadesOperacion(operaciones, clave) 
+            {
+                A = clave;
+                $.each(operaciones, function(key)
+                {
+                    B = operaciones[key].COD_OPERACION;
+                    if(A === B)
+                    { 
+                        ENTIDADES =  operaciones[key].ENTIDADES; 
+                        
+                        $('#selectEntidades').empty();
+                        if (ENTIDADES.length === 1)
+                        {
+                            COD_ENTIDAD         = ENTIDADES[0].COD_ENTIDAD;
+                            NOMBRE_ENTIDAD      = ENTIDADES[0].NOMBRE;
+                            buscarMunicipiosEntidad(ENTIDADES,ENTIDADES[0].COD_ENTIDAD);
+                            $("#div-entidades").css("display", "none");
+                        }  
+                        else if (ENTIDADES.length >=  1)
+                        {
+                            $('#selectEntidades').append($('<option disabled selected value> -- SELECCIONE -- </option>'));
+                            $.each(ENTIDADES, function(key)
+                            {
+                                COD_ENTIDAD         = ENTIDADES[key].COD_ENTIDAD;
+                                NOMBRE_ENTIDAD      = ENTIDADES[key].NOMBRE;
+                                $('#selectEntidades').append($('<option>',{
+                                    value:  COD_ENTIDAD,
+                                    text:   NOMBRE_ENTIDAD.toUpperCase()}
+                                ));
+                                $("#div-entidades").css("display", "block");
+                            });
+                            $('#selectEntidades').prop('disabled', false);
+                        }
+                        else
+                        {
+                            ERROR = "ESTS CAMPAÑA NO TIENE ENTIDADES ASIGNADAS, POR FAVOR CONTACTE AL ADMINISTRADOR DEL SISTEMA";
+                        }  
+                    }
+                });       
+            }           
+
+            apiGeolocationSuccess = function(position) 
+            {
+                $("#loader").css("display", "none");
+                $("#latitud").val(position.coords.latitude);
+                $("#longitud").val(position.coords.longitude);
+                $("#cordenadas").css("display", "block");
+                $("#error").css("display", "none");
+            };
+
+            tryAPIGeolocation = function() 
+            {
+                jQuery.post( "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAzkOUglgP1Pr46brhQBZnZTEyXM2aqnns", function(success) 
+                {
+                    apiGeolocationSuccess(
+                    {
+                        coords: 
+                        {
+                            latitude: success.location.lat, 
+                            longitude: success.location.lng
+                        }
+                    });
+                })
+                .fail(function(err) 
+                {
+                    $("#loader").css("display", "none");
+                    $("#cordenadas").css("display", "none");
+                    $("#error").css("display", "block");
+                });
+            };
+
+            browserGeolocationSuccess = function(position) 
+            {
+                $("#loader").css("display", "none");
+                $("#latitud").val(position.coords.latitude);
+                $("#longitud").val(position.coords.longitude);
+                $("#cordenadas").css("display", "block");
+                $("#error").css("display", "none");
+            };
+
+            var browserGeolocationFail = function(error) 
+            {
+                switch (error.code) 
+                {
+                    case error.TIMEOUT:
+                        $("#loader").css("display", "none");
+                        $("#cordenadas").css("display", "none");
+                        $("#error").css("display", "block");
+                    break;
+                    case error.PERMISSION_DENIED:
+                        if(error.message.indexOf("Only secure origins are allowed") === 0) 
+                        {
+                            tryAPIGeolocation();
+                        }
+                    break;
+                    case error.POSITION_UNAVAILABLE:
+                        $("#loader").css("display", "none");
+                        $("#cordenadas").css("display", "none");
+                        $("#error").css("display", "block");
+                    break;
+                }
+            };
+
+            var tryGeolocation = function() 
+            {
+                if (navigator.geolocation) 
+                {
+                    navigator.geolocation.getCurrentPosition
+                    (
+                        browserGeolocationSuccess,
+                        browserGeolocationFail,
+                        {
+                            maximumAge: 60, 
+                            timeout: 60000, 
+                            enableHighAccuracy: true
+                        }
+                    );
+                }
+            };
+
+
+            
+            
+            $(document).ready(function()
+            {
+                
+                tryGeolocation();
+
+                $("#refrescar").click(function()
+                {
+                    $(location).attr('href',"");
+                });
+           
+                DATA = SESSION_DATA.getUserDataFromSession();
+                OPERACIONES = DATA.OPERACIONES;
+                ENCUESTADOR = DATA.ENCUESTADOR;
+                //console.log(ENCUESTADOR);
+                
+                
+                COD_OPERACION = localStorage.getItem("COD_OPERACION");
+                COD_ENCUESTA = localStorage.getItem("COD_ENCUESTA");
+                ENCUESTA = localStorage.getItem("ENCUESTA");
+                COD_ENCUESTADOR = ENCUESTADOR.COD_ENCUESTADOR;
+                COD_OPERACIONES_ELECTORES = localStorage.getItem("COD_OPERACIONES_ELECTORES");
+                ELECTORES = localStorage.getItem("ELECTORES");
+                
+                 if(ELECTORES === "0")
+                {
+                    $('#nombres').prop('disabled', false);
+                    $('#apellido_p').prop('disabled', false);
+                    $('#apellido_m').prop('disabled', false);
+                    
+                    $('#estado').prop('disabled', false);
+                    $('#municipio').prop('disabled', false);
+                    $('#seccion').prop('disabled', false);
+                    
+                    $('#calleavenida').prop('disabled', false);
+                    $('#numero').prop('disabled', false);
+                    $('#colonia').prop('disabled', false);                    
+                }
+                else
+                {
+                    DATOS_ELECTOR = JSON.parse(localStorage.getItem("DATOS_ELECTOR")); 
+                    $('#nombres').val(DATOS_ELECTOR.NOMBRES);
+                    $('#apellido_p').val(DATOS_ELECTOR.PRIMER_APELLIDO);
+                    $('#apellido_m').val(DATOS_ELECTOR.SEGUNDO_APELLIDO);
+                    $('#telefono').val(DATOS_ELECTOR.TELEFONO_CELULAR);
+
+                    $('#calleavenida').val(DATOS_ELECTOR.CALLE);
+                    $('#numero').val(DATOS_ELECTOR.NUMERO_CASA);
+                    $('#colonia').val(DATOS_ELECTOR.COLONIA);
+                    
+                    COD_ENTIDAD = DATOS_ELECTOR.COD_ENTIDAD;
+                    COD_MUNICIPIO = DATOS_ELECTOR.COD_MUNICIPIO;
+                    COD_SECCION = DATOS_ELECTOR.COD_SECCION;
+                }
+                 
+                 
+                 /*
+                
+                DATOS_ELECTOR = JSON.parse(localStorage.getItem("DATOS_ELECTOR")); 
+               
+                $('#nombres').val(DATOS_ELECTOR.NOMBRES);
+                $('#apellido_p').val(DATOS_ELECTOR.PRIMER_APELLIDO);
+                $('#apellido_m').val(DATOS_ELECTOR.SEGUNDO_APELLIDO);
+                $('#telefono').val(DATOS_ELECTOR.TELEFONO_CELULAR);
+
+                $('#calleavenida').val(DATOS_ELECTOR.CALLE);
+                $('#numero').val(DATOS_ELECTOR.NUMERO_CASA);
+                $('#colonia').val(DATOS_ELECTOR.COLONIA);
+                */
+                $.each(OPERACIONES, function(key)
+                {
+                    if(OPERACIONES[key].COD_OPERACION === localStorage.getItem("COD_OPERACION"))
+                    {
+                        ENTIDADES = OPERACIONES[key].ENTIDADES;
+                        $.each(ENTIDADES, function(key)
+                        {
+                            if(ENTIDADES[key].COD_ENTIDAD === DATOS_ELECTOR.COD_ENTIDAD)
+                            {
+                                $('#estado').val(ENTIDADES[key].NOMBRE.toUpperCase());
+                                MUNICIPIOS = ENTIDADES[key].MUNICIPIOS;
+                                $.each(MUNICIPIOS, function(key)
+                                {
+                                    if(MUNICIPIOS[key].COD_MUNICIPIO === DATOS_ELECTOR.COD_MUNICIPIO)
+                                    {
+                                        $('#municipio').val(MUNICIPIOS[key].NOMBRE.toUpperCase());
+                                        SECCIONES = MUNICIPIOS[key].SECCIONES;
+                                        $.each(SECCIONES, function(key)
+                                        {
+                                            if(SECCIONES[key].COD_SECCION === DATOS_ELECTOR.COD_SECCION)
+                                            {
+                                                $('#seccion').val(SECCIONES[key].COD_SECCION.toUpperCase());
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            
+                $("#preloader").delay(100).fadeOut("slow");
+
+                $("#guardar").click(function(e)
+                {
+                    ELECTORES = "0" + "|" + $('#nombres').val() + "|" + $('#apellido_p').val() + "|" + $('#apellido_m').val() + "|" + $('#estado').val() + "|" + $('#municipio').val() + "|" + $('#seccion').val() + "|" + $('#calleavenida').val() + "|" + $('#numero').val() + "|" + $('#colonia').val();
+                    
+                    TELEFONO = $("#telefono").val();
+                    
+                    LATITUD = $("#latitud").val();
+                    LONGITUD = $("#longitud").val();
+
+                    CALLE = $("#calleavenida2").val();
+                    NUMERO = $("#numero2").val();
+                    COLONIA = $("#colonia2").val();
+                
+                
+                    URL                 = "https://escala.org.mx/APPREDA_MOVIL/common/ws.php?format=json";
+                    METODO              = "INSERTAR_ENCUESTA_REALIZADA";
+                    VALOR               = COD_ENCUESTA + "|" + COD_OPERACIONES_ELECTORES + "|" + COD_OPERACION + "|" + ENCUESTA + "|" + COD_ENCUESTADOR + "|" + LATITUD + "|" + LONGITUD + "|" + CALLE + "|" + NUMERO + "|" + COLONIA + "|" + TELEFONO + "|" + ELECTORES;
+                    LOADER              = "#loader";
+                    ERROR               = "#error";
+
+                    call_Ajax_Jsonp(URL, METODO, VALOR, LOADER, ERROR, function(data) 
+                    {
+                        localStorage.removeItem("COD_OPERACIONES_ELECTORES");
+                        localStorage.removeItem("DATOS_ELECTOR");
+                        localStorage.removeItem("ENCUESTA");
+                        $(location).attr('href',"encuesta.html");
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

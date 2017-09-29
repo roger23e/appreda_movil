@@ -1,0 +1,508 @@
+<?php
+    header('Content-Type: text/html; charset=utf-8');
+    $id = $_GET['id'];
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>APPREDA</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="apple-touch-icon" sizes="57x57" href="../../img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../../img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../../img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../../img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../../img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../../img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../../img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../../img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="../../img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="../../img/favicon/manifest.json">
+        
+        <link href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/bootstrap-table.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/font-awesome.css" rel="stylesheet" />
+        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+        <!--[if lt IE 9]>
+            <script src="../../js/html5shiv.min.js" type="text/javascript"></script>
+            <script src="../../js/respond.min.js" type="text/javascript"></script>
+        <![endif]-->         
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <img class="img-responsive" style="padding-top:10px;" src="../../assets/img/logo.png" alt="" />
+            </div>
+        </header>
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" >
+                        <nav class="navbar navbar-default" style="margin-top:80px;margin-bottom:20px;">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a  href="../../main.php" class="navbar-brand" style="font-weight:bolder;color:#0069A6;">APPREDA</a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav nav-justified" style="font-weight:bold;color:#0069A6;">
+                                        <li><a href="../usuarios/main.php">USUARIOS</a></li>                         
+                                        <li><a href="../encuestadores/main.php">ENCUESTADORES</a></li>
+                                        <li><a href="../encuestas/main.php">ENCUESTAS</a></li>
+                                        <li><a style="white-space: nowrap;" href="../organizacion-geografica/main.php">ORGANIZACIÓN GEOGRÁFICA</a></li> 
+                                        <li><a href="../electores/main.php">ELECTORES</a></li> 
+                                        <li><a href="../campanas/main.php">CAMPAÑAS</a></li> 
+                                        <li><a class="fa fa-download fa-lg" href="../descargas/main.php"></a></li>
+                                        <li><a class="fa fa-cogs fa-lg" href="../configuracion/main.php"></a></li>
+                                        <li><a class="fa fa-sign-out fa-lg" href="../../common/cerrar-session.php"></a></li> 
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="page-head-line">CONSULTAR ELECTORES</h4>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="container">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputOperacion" class="col-sm-2 control-label">OPERACION: </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inputOperacion">
+                                <option>1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEstados" class="col-sm-2 control-label">ENTIDAD: </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inputEstados">
+                                <option>MEXICO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMunicipios" class="col-sm-2 control-label">MUNICIPIO: </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inputMunicipios">
+                                <option>CHICONCUAC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSecciones" class="col-sm-2 control-label">SECCION: </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inputSecciones">
+                                <option></option>
+                                <option>1142</option>
+                                <option>1143</option>
+                                <option>1144</option>
+                                <option>1145</option>
+                                <option>1146</option>
+                                <option>1147</option>
+                                <option>1148</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNombres" class="col-sm-2 control-label">NOMBRES:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputNombres">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputApellidoP" class="col-sm-2 control-label">APELLIDO PATERNO: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputApellidoP">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputApellidoM" class="col-sm-2 control-label">APELLIDO MATERNO: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputApellidoM">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="button" id="buscar" class="btn btn-primary ">BUSCAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="text-align:center;">ELECTORES</div>
+                            <div class="panel-body">
+                                <input type="hidden" id="id" value="<?php echo $id?>"/>
+                                <table id="table-electores-totales" data-sort-name="" data-sort-order="asc" data-show-refresh="false" data-show-toggle="false" data-show-columns="true" data-search="true" data-show-export="true" data-pagination="true" data-page-list="[5, 10, 20, 50, 100, 200, 500, 1000]"  data-toolbar-align="right"></table>
+                            </div>
+                        </div>				        	
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="button" id="button-regresar" class="btn btn-primary">REGRESAR</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="push"></div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        &copy; 2015 Escala | Todos los derechos reservados
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="modal fade" id="modal-informacion" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">EDITAR NUMEROS DE TELEFONO DEL ELECTOR</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="celular" class="col-lg-12 control-label">NUMERO DE TELEFONO CELULAR:</label>
+                                    <div class="col-lg-12" style="margin-bottom:20px;">
+                                        <input type="hidden" class="form-control" name="id-elector" id="id-elector"/>
+                                        <input type="tel" class="form-control" name="celular" id="celular"/>
+                                    </div>
+                                    <label for="fijo" class="col-lg-12 control-label">NUMERO DE TELEFONO FIJO:</label>
+                                    <div class="col-lg-12" style="margin-bottom:20px;">
+                                        <input type="tel" class="form-control" name="fijo" id="fijo"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+                        <button type="button" class="btn btn-primary" id="button-guardar-informacion">GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="../../js/jquery-1.11.2.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/bootstrap-table.js" type="text/javascript"></script>
+        <script src="../../locale/bootstrap-table-es-AR.js" type="text/javascript"></script> 
+        <script>
+            var COD_ORGANIZACION_GEOGRAFICA = null;
+            var NOMBRES                     = null;
+            var APELLIDOS                   = null;
+            var DIRECCION                   = null;
+            var CORREO                      = null;
+            var COD_OPERACIONES_ELECTORES   = null;
+            var TELEFONO_CELULAR            = null;
+            var TELEFONO_FIJO               = null;
+            
+            var STATUS                      = null;
+            var URL                         = null;
+            var METODO                      = null;
+            var VALOR                       = null;
+            var LOADER                      = null;
+            var ERROR                       = null;
+            var DATA                        = null;
+            var ROW                         = null;
+            var FIELD                       = null;
+            
+            function call_Ajax_Jsonp(URL, METODO, VALOR, LOADER, ERROR, FN) 
+            {
+                $.ajax
+                ({
+                    type: "GET",
+                    url: "../../" + URL,
+                    //url: "https://escala.org.mx/APPREDA_2.0/common/ws.php?format=json",
+                    data:
+                    {
+                        m: METODO,
+                        v: VALOR
+                    },
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "JasonpCallback",
+                    async: true,
+                    beforeSend: function()
+                    {
+                        $(LOADER).css("display", "block");
+                        $(LOADER).css("padding-bottom", "15px");
+                    },
+                    complete: function()
+                    {
+                        $(LOADER).css("display", "none");
+                    },
+                    success: function(data)
+                    {
+                        FN(data);
+                    },
+                    error: function () 
+                    {
+                        $(ERROR).css("display", "block");
+                        $(ERROR).html("<p style='padding:10px; color:red;'>No se pudo conectar, por favor intente nuevamente.</p>");
+                    }
+                });
+            }
+            
+            function acciones(element) 
+            {                
+                URL                 = "common/ws.php?format=json";
+                METODO              = "DETECTAR_ELECTOR";
+                VALOR               = element.attr("id");
+                LOADER              = "";
+                ERROR               = "";
+                
+                call_Ajax_Jsonp(URL, METODO, VALOR, LOADER, ERROR, function() 
+                {
+                    $("#buscar").trigger("click");
+                    
+                    /*
+                    alert($('#mytable').data('url'));
+                    $('#mytable').data('url', '@Url.Action("GetShipments", "Report")');
+                    alert($('#mytable').data('url'));
+                    $('#mytable').bootstrapTable('refresh');
+                    */
+                    
+                    
+                    
+                });
+            }
+            
+
+            
+            $(document).ready(function()
+            {
+                COD_OPERACION = 1;
+                COD_ENTIDAD   = 15;
+                COD_MUNICIPIO = 30;
+   
+                $("#buscar").click(function()
+                {
+                    COD_SECCION = $( "#inputSecciones option:selected" ).text();
+                    NOMBRES     = $("#inputNombres").val().toUpperCase();
+                    APELLIDO_P  = $("#inputApellidoP").val().toUpperCase();
+                    APELLIDO_M  = $("#inputApellidoM").val().toUpperCase();
+                    
+                    if(COD_SECCION === "")
+                    {
+                        COD_SECCION = "VACIO";
+                    }
+                    
+                    if(NOMBRES === "")
+                    {
+                        NOMBRES = "VACIO";
+                    }
+                    
+                    if(APELLIDO_P === "")
+                    {
+                        APELLIDO_P = "VACIO";
+                    }
+                    
+                    if(APELLIDO_M === "")
+                    {
+                        APELLIDO_M = "VACIO";
+                    }
+                    
+                    
+                    if (COD_SECCION === "VACIO" && NOMBRES === "VACIO" && APELLIDO_P === "VACIO" && APELLIDO_M === "VACIO")
+                    {
+                        alert("DEBE SELECCIONAR AL MENOS UN FILTRO MAS");
+                    }
+                    else
+                    {
+                        URL     = "common/ws.php?format=json";
+                        METODO  = "CONSULTAR_ELECTORES_2";
+                        VALOR   = COD_OPERACION + "|" + COD_ENTIDAD + "|" + COD_MUNICIPIO + "|" + COD_SECCION + "|" + NOMBRES + "|" + APELLIDO_P + "|" + APELLIDO_M;
+
+                        call_Ajax_Jsonp(URL, METODO, VALOR, LOADER, ERROR, function(data) 
+                        {
+                            
+                            
+                            DATA = data.ELECTORES;
+                            $('#table-electores-totales').bootstrapTable('removeAll');
+                            $('#table-electores-totales').bootstrapTable('destroy');
+                            //console.log(DATA);
+                            
+                            
+                            $('#table-electores-totales').bootstrapTable
+                            ({
+                               data: DATA,
+                               columns: 
+                               [
+                                   {
+                                       field: 'COD_OPERACIONES_ELECTORES',
+                                       title: 'CODIGO',
+                                       align: 'center',
+                                       valign: 'middle',
+                                       width: 1
+                                   }, 
+                                   {
+                                       field: 'NOMBRES',
+                                       title: 'NOMBRES',
+                                       align: 'left',
+                                       valign: 'middle'
+                                   },
+                                   {
+                                       field: 'PRIMER_APELLIDO',
+                                       title: 'P. APELLIDO',
+                                       align: 'left',
+                                       valign: 'middle',
+                                       width: 1
+                                   }, 
+                                   {
+                                       field: 'SEGUNDO_APELLIDO',
+                                       title: 'S. APELLIDO',
+                                       align: 'left',
+                                       valign: 'middle',
+                                       width: 1
+                                   },
+                                   {
+                                       field: 'COD_ENTIDAD',
+                                       title: 'ENTIDAD',
+                                       align: 'center',
+                                       valign: 'middle',
+                                       width: 1
+                                   },
+                                   {
+                                       field: 'COD_MUNICIPIO',
+                                       title: 'MUNICIPIO',
+                                       align: 'center',
+                                       valign: 'middle',
+                                       width: 1
+                                   },
+                                   {
+                                       field: 'TELEFONO_CELULAR',
+                                       title: 'TEL CEL',
+                                       align: 'center',
+                                       valign: 'middle',
+                                       width: 1
+                                   },
+                                   {
+                                       field: 'TELEFONO_FIJO',
+                                       title: 'TEL HAB',
+                                       align: 'center',
+                                       valign: 'middle',
+                                       width: 1
+                                   },
+                                   {
+                                       field: 'COD_SECCION',
+                                       title: 'SECCION',
+                                       align: 'center',
+                                       valign: 'middle',
+                                       width: 1
+                                   },
+                                   {
+                                       field: 'DETECTADO',
+                                       title: 'DET.',
+                                       align: 'center',
+                                       valign: 'middle',
+                                       width: 1,
+                                       formatter : function(value) 
+                                       {
+                                           if (value === "0")
+                                           {
+                                               return '<span class="label label-danger">NO</span>';
+                                           }
+                                           else
+                                           {
+                                               return '<span class="label label-success">SI</span>';
+                                           } 
+                                       } 
+                                   },
+                                   {
+                                        field: 'COD_OPERACIONES_ELECTORES',
+                                        title: 'DETECTAR',
+                                        align: 'center',
+                                        valign: 'middle',
+                                        width: 1,
+                                        formatter : function(value) 
+                                        {
+                                            //return '<button  class="btn btn-link activar"  id="' + value + '"><span class="fa fa-power-off" aria-hidden="true" style="text-align:center;"></span></button>';                                   
+                                            return '<button class="btn btn-link" onclick="acciones($(this))" id="' + value + '"><span class="fa fa-power-off" aria-hidden="true" style="text-align:center;"></span></a>';  
+
+                                        } 
+                                    },
+                                   {
+                                        field: 'EDITAR',
+                                        title: 'TELEFONOS',
+                                        align: 'center',
+                                        valign: 'middle',
+                                        width: 1,
+                                        formatter : function(row) 
+                                        {
+                                            //return '<button  class="btn btn-link activar"  id="' + value + '"><span class="fa fa-power-off" aria-hidden="true" style="text-align:center;"></span></button>';                                   
+                                            return '<button class="btn btn-link" class="link"><span class="fa fa-phone" aria-hidden="true" style="text-align:center;"></span></a>';  
+                                            // onclick="acciones($(this))" id="' + value + '"
+                                        } 
+                                    }
+                               ],
+                               onClickCell: function (field, value, row) 
+                               {
+                                    ROW = row;
+                                    if (field === "EDITAR")
+                                    { 
+                                        COD_OPERACIONES_ELECTORES   = ROW.COD_OPERACIONES_ELECTORES;
+                                        TELEFONO_CELULAR            = ROW.TELEFONO_CELULAR;
+                                        TELEFONO_FIJO               = ROW.TELEFONO_FIJO;
+                                        $('#modal-informacion').modal('show');
+                                        $(".modal-body #id-elector").val(COD_OPERACIONES_ELECTORES);
+                                        $(".modal-body #celular").val(TELEFONO_CELULAR);
+                                        $(".modal-body #fijo").val(TELEFONO_FIJO);
+                                        
+                                    }
+                               }
+                            });                      
+                        });
+                    }  
+                });
+                
+                $("#button-guardar-informacion").click(function()
+                {
+                
+                    //URL                 = "common/ws-inmuebles.php?format=json";
+                    METODO              = "ACTUALIZAR_ELECTOR";
+                    VALOR               = COD_OPERACIONES_ELECTORES + "|" + $("#celular").val() + "|" + $("#fijo").val();
+
+                    call_Ajax_Jsonp(URL, METODO, VALOR, LOADER, ERROR, function() 
+                    {
+                        $("#buscar").trigger("click"); 
+                        $('#modal-informacion').modal('hide');
+                    });                 
+                });
+
+                $("#button-regresar").click(function(e)
+                {
+                    $(location).attr('href',"javascript:window.history.back()");                   
+                }); 
+            });
+  
+            
+            
+            
+            
+            
+            
+        </script>
+    </body>
+</html>
