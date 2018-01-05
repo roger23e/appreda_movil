@@ -6,7 +6,7 @@
     <author email="dddevelopersanddesigners@gmail.com" href="http://escala.org.mx" >
         Roger Guevara
     </author>
-    <content src="index.html" />
+    <content src="index.html"/>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
