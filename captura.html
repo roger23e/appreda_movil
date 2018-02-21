@@ -27,7 +27,7 @@
                         <nav class="navbar navbar-default" >
                             <div class="container">
                                 <div class="navbar-header">
-                                    <a href="main.php" class="navbar-brand active">APPREDA MOVIL</a>
+                                    <a href="main.php" class="navbar-brand active">APPREDA MOVILE</a>
                                 </div>
                             </div>
                         </nav>
@@ -87,21 +87,21 @@
                                                 <input type="text" class="form-control" id="apellido_m" placeholder="Apellido Materno" disabled="disabled">
                                             </div>
                                         </div>
-										<div class="form-group">
-                                            <label for="colonia" class="col-sm-2 control-label hidden-xs hidden-sm">Colonia:</label>
+                                        <div class="form-group">
+                                            <label for="telefono-fijo" class="col-sm-2 control-label hidden-xs hidden-sm">Telefono fijo:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="colonia"  placeholder="Colonia" disabled="disabled">
+                                                <input type="text" class="form-control" id="telefono-fijo" placeholder="Telefono fijo">
                                             </div>
                                         </div>
-                                        <!--div class="form-group">
-                                            <label for="telefono" class="col-sm-2 control-label hidden-xs hidden-sm">Telefono:</label>
+                                        <div class="form-group">
+                                            <label for="telefono-celular" class="col-sm-2 control-label hidden-xs hidden-sm">Telefono celular:</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="telefono" placeholder="Telefono">
+                                                <input type="text" class="form-control" id="telefono-celular" placeholder="Telefono celular">
                                             </div>
-                                        </div-->
+                                        </div>
                                     </div>
-                                    <!--div class="well">
-                                        <DIRECCION DE LA CREDENCIAL DE ELECTOR
+                                    <div class="well">
+                                        DIRECCION DE LA CREDENCIAL DE ELECTOR
                                         <div class="form-group">
                                             <label for="estado" class="col-sm-2 control-label hidden-xs hidden-sm">Estado:</label>
                                             <div class="col-sm-10">
@@ -132,8 +132,14 @@
                                                 <input type="text" class="form-control" id="numero" placeholder="Numero" disabled="disabled">
                                             </div>
                                         </div>
-                                    </div-->
-                                    <!--div class="well">
+                                        <div class="form-group">
+                                            <label for="colonia" class="col-sm-2 control-label hidden-xs hidden-sm">Colonia:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="colonia"  placeholder="Colonia" disabled="disabled">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="well">
                                         DIRECCION DE VIVIENDA
                                         <div class="form-group">
                                             <label for="calleavenida2" class="col-sm-2 control-label hidden-xs hidden-sm">Calle/Avenida:</label>
@@ -153,7 +159,7 @@
                                                 <input type="text" class="form-control" id="colonia2"  placeholder="Colonia">
                                             </div>
                                         </div>
-                                    </div-->
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <button type="button" id="guardar" class="btn btn-login">GUARDAR</button>
@@ -175,7 +181,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-table.js" type="text/javascript"></script>
         <script src="js/bootstrap-table-mobile.js" type="text/javascript"></script>
-		<script src="cordova.js"></script>
+        <script src="cordova.js"></script>
         <!--script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAzkOUglgP1Pr46brhQBZnZTEyXM2aqnns"></script-->
         <script>
             
@@ -215,6 +221,9 @@
             var LONGITUD            = null;
             var GEOESTATUS          = null;
             var GEOMENSAJE          = null;
+            
+            var TELEFONO_CELULAR    = null;
+            var TELEFONO_FIJO       = null;
             
             var SESSION_DATA = 
             {
@@ -648,8 +657,8 @@
                 {
                     ELECTORES = "0" + "|" + $('#nombres').val() + "|" + $('#apellido_p').val() + "|" + $('#apellido_m').val() + "|" + $('#estado').val() + "|" + $('#municipio').val() + "|" + $('#seccion').val() + "|" + $('#calleavenida').val() + "|" + $('#numero').val() + "|" + $('#colonia').val();
                     
-                    TELEFONO = $("#telefono").val();
-                    
+                    TELEFONO_CELULAR = $("#telefono-celular").val();
+                    TELEFONO_FIJO = $("#telefono-fijo").val();
                     /*
                     LATITUD = "19.4416049"; //$("#latitud").val();
                     LONGITUD = "-99.2249537" //$("#longitud").val();
@@ -661,7 +670,7 @@
                 
                     URL                 = "https://escala.org.mx/APPREDA_MOVIL/common/ws.php?format=json";
                     METODO              = "INSERTAR_ENCUESTA_REALIZADA";
-                    VALOR               = COD_ENCUESTA + "|" + COD_OPERACIONES_ELECTORES + "|" + COD_OPERACION + "|" + ENCUESTA + "|" + COD_ENCUESTADOR + "|" + LATITUD + "|" + LONGITUD + "|" + CALLE + "|" + NUMERO + "|" + COLONIA + "|" + TELEFONO + "|" + ELECTORES;
+                    VALOR               = COD_ENCUESTA + "|" + COD_OPERACIONES_ELECTORES + "|" + COD_OPERACION + "|" + ENCUESTA + "|" + COD_ENCUESTADOR + "|" + LATITUD + "|" + LONGITUD + "|" + CALLE + "|" + NUMERO + "|" + COLONIA + "|" + TELEFONO_CELULAR + "|" + TELEFONO_FIJO + "|" + ELECTORES;
                     LOADER              = "#loader";
                     ERROR               = "#error";
 
